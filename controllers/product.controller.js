@@ -1,6 +1,6 @@
 
 async function getProducts(req,res){
-
+  await mos
 }
 
 async function getSingleProduct(req,res){
