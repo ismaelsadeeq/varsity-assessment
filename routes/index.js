@@ -6,7 +6,7 @@ const cors = require('../config/cors');
 
 /* GET home page. */
 router.get('/',
-  // cors.cors,
+  cors.cors,
   controller.getProducts
 );
 

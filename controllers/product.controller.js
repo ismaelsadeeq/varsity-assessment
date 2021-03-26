@@ -4,28 +4,14 @@ const multerConfig = require('../config/multer');;
 
 
 async function getProducts(req,res){
-  let product = await models.product.findAndCountAll();
-  if(product){
-    let noOfproduct = product.count;
-	let pageLimit = parseInt(req.query.pageLimit);
-	
-	let currentPage = parseInt(req.query.currentPage);
-	let pages = noOfproduct / pageLimit;
-	let numberOfPages = Math.ceil(pages);
   
-	let	skip = currentPage * pageLimit
-			const products = await models.product.findAll(
-			{
-				order:[['updatedAt','DESC']],
-				offset:skip,limit:pageLimit
-			})
-	return res.json({'status':'success','message':'there are '+ numberOfPages +' pages','data':{
-		'total':noOfproduct,
-		'pages':numberOfPages,
-		'products':products
-	}});
-  }
-	return res.json("no products")
+	const products = await models.product.findAll(
+	{
+    order:[['updatedAt','DESC']],
+  })
+	return res.json({
+    'status':'success','data':products
+	});
 }
 
 async function getSingleProduct(req,res){
