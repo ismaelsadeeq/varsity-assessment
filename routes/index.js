@@ -6,7 +6,7 @@ const cors = require('../config/cors');
 
 /* GET home page. */
 router.get('/',
-  cors.cors,
+  // cors.cors,
   controller.getProducts
 );
 
@@ -25,9 +25,9 @@ router.put('/edit/:id',
   controller.editProduct
 );
 
-router.delete('/delete/:id',
+router.put('/delete/:id',
   cors.cors,
-  controller.deleteProduct
+  controller.deleteProductVarieties
 );
 
 module.exports = router;
